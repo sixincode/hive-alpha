@@ -2,7 +2,7 @@
 
 // config for Sixincode/HiveAlpha
 return [
-'fallback_locale' => en,
+'fallback_locale' => 'en',
 'active_translations'  =>
         [
           'en',
