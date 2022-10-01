@@ -12,30 +12,29 @@ trait GlobalUniqueIdentifierTrait
     if(app()->runningInConsole()) {
         return;
     }
-    static::creating(function (self $model) {
-          if($model->shouldGenerateGlobalId())
+    static::creating(function (Model $model) {
+          if(self::shouldGenerateGlobalId())
           {
             $model->setAttribute(
-              getGlobalIdKeyName(),
+              self::getGlobalIdKeyName(),
               Str::uuid()
             );
           }
-
           return;
       });
   }
 
-  private static function shouldGenerateGlobalId()
+  private static function shouldGenerateGlobalId(): bool
   {
-    return true;
+    return config('hive-alpha.processes.global_by_default');
   }
 
-  public static function getGlobalIdKeyName()
+  public static function getGlobalIdKeyName(): string
   {
     return config('hive-alpha.column_names.key_global');
   }
 
-  private getGlobalId()
+  public static function getGlobalId(): string
   {
     return $this->getAttribute($this->getGlobalIdKeyName());
   }

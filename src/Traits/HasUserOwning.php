@@ -16,16 +16,15 @@ trait HasUserOwning
       static::creating(function (Model $model) {
           if(auth()->check()){
             $model->setAttribute(
-              getUserGlobalKeyName(),
+              self::getUserGlobalKeyName(),
               auth()->user()->getGlobalId()
             );
           }
-
-          return;         
+          return;
        });
    }
 
-   public function getUserGlobalKeyName()
+   public function getUserGlobalKeyName(): string
    {
      return config('hive-alpha.column_names.key_global');
    }

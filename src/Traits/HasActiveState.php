@@ -14,10 +14,10 @@ trait HasActiveState
           return;
       }
       static::creating(function (Model $model) {
-          if ($this->shouldBeActiveByDefault())
+          if (self::shouldBeActiveByDefault())
           {
             $model->setAttribute(
-               getIsActiveKeyName(),
+               self::getIsActiveKeyName(),
                true
              );
           }
@@ -25,17 +25,17 @@ trait HasActiveState
       }
    }
 
-   private static function shouldBeActiveByDefault()
+   private static function shouldBeActiveByDefault(): bool
    {
      return config('hive-alpha.processes.activate_by_default');
    }
 
-   public static function getIsActiveKeyName()
+   public static function getIsActiveKeyName(): string
    {
       return config('hive-alpha.column_names.state_active');
    }
 
-   public static function getActiveState()
+   public static function getActiveState(): bool
    {
      return $this->getAttribute($this->getIsActiveKeyName());
    }
