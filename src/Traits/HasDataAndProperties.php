@@ -3,6 +3,8 @@
 namespace Sixincode\HiveAlpha\Traits;
 
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 trait HasDataAndProperties
@@ -11,6 +13,8 @@ trait HasDataAndProperties
   {
     $this->casts['data'] = SchemalessAttributes::class;
     $this->casts['properties'] = SchemalessAttributes::class;
+    $this->orderable[] = 'properties';
+    $this->filterable[] = 'properties';
   }
 
   public function scopeWithData(): Builder

@@ -3,7 +3,6 @@
 namespace Sixincode\HiveAlpha\Models;
 
 use \DateTimeInterface;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Sixincode\HiveAlpha\Traits\GlobalUniqueIdentifierTrait;
@@ -11,7 +10,7 @@ use Sixincode\HiveAlpha\Traits\HasDataAndProperties;
 use Sixincode\HiveAlpha\Traits\HasUserOwning;
 use Spatie\Translatable\HasTranslations;
 
-class HiveModel extends Model
+class HiveModel extends HiveModelMin
 {
     use SoftDeletes;
     use HasFactory;

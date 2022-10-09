@@ -4,14 +4,18 @@ namespace Sixincode\HiveAlpha\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Sixincode\HiveHelpers\Traits\FieldsTraits;
 
 trait GlobalUniqueIdentifierTrait
 {
   public static function bootGlobalUniqueIdentifierTrait()
   {
+    use FieldsTraits;
+
     if(app()->runningInConsole()) {
         return;
     }
+
     static::creating(function (Model $model) {
           if(self::shouldGenerateGlobalId())
           {
@@ -31,7 +35,7 @@ trait GlobalUniqueIdentifierTrait
 
   public static function getGlobalIdKeyName(): string
   {
-    return config('hive-alpha.column_names.key_global');
+    return self::globalFieldName();
   }
 
   public static function getGlobalId(): string

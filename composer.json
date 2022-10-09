@@ -18,7 +18,8 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^9.0",
-        "spatie/laravel-package-tools": "^1.13.0",
+        "sixincode/hive-helpers": "^1.0",
+        "sixincode/modules-init": "^1.0",
         "spatie/laravel-schemaless-attributes": "^2.3",
         "spatie/laravel-sluggable": "^3.4",
         "spatie/laravel-translatable": "^6.0"
@@ -64,6 +65,15 @@
             }
         }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.com/sixincode/"
+        },
+        {
+            "packagist.org": false
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }

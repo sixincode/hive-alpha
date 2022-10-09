@@ -43,19 +43,26 @@ trait HasSlug
              : 'slug';
    }
 
+   public function getSlugRule()
+   {
+     return (isset(self::slugRule()))
+             ? self::slugOriginElement()
+             : 'slug';
+             function($model, $locale)
+             {
+               return "{$locale} {$model->slugOrigin}";
+             }
+   }
+
    public function getSlugOptions() : SlugOptions
    {
      return SlugOptions::createWithLocales(
           array_keys(config('hive-lang.supportedLocales'))
        )->generateSlugsFrom(
-          function($model, $locale)
-          {
-            return "{$locale} {$model->slugOrigin}";
-          }
+          $this->getSlugRule()
         )->saveSlugsTo(
-          self::getSlugKeyName()
-        )
-        // ->slugsShouldBeNoLongerThan(64)
+          $this->getSlugKeyName()
+        )->slugsShouldBeNoLongerThan(64)
         ;
    }
 }

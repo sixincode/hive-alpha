@@ -5,18 +5,21 @@ namespace Sixincode\HiveAlpha\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Sixincode\HiveHelpers\Traits\FieldsTraits;
 
 trait HasUserOwning
 {
+  use FieldsTraits;
+
   public static function bootHasUserOwning()
   {
       if (app()->runningInConsole()) {
           return;
       }
       static::creating(function (Model $model) {
-          if(auth()->check()){
+          if(auth()->check() && self::shouldBeUserAffiliated()){
             $model->setAttribute(
-              self::getUserGlobalKeyName(),
+              self::globalUserFieldName(),
               auth()->user()->getGlobalId()
             );
           }
@@ -24,9 +27,9 @@ trait HasUserOwning
        });
    }
 
-   public function getUserGlobalKeyName(): string
+   private static function shouldBeUserAffiliated(): bool
    {
-     return config('hive-alpha.column_names.key_global');
+     return true;
    }
 
 }

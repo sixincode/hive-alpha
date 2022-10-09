@@ -2,8 +2,8 @@
 
 namespace Sixincode\HiveAlpha;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Sixincode\ModulesInit\Package;
+use Sixincode\ModulesInit\PackageServiceProvider;
 use Sixincode\HiveAlpha\Commands\HiveAlphaCommand;
 use Illuminate\Foundation\Console\AboutCommand;
 

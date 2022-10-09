@@ -2,11 +2,10 @@
 
 namespace Sixincode\HiveAlpha\Models;
 
-use \DateTimeInterface;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\HiveModelMin;
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 
-class HiveModelx extends Model
+class HiveModelx extends HiveModelMin
 {
     $this->casts['properties'] = SchemalessAttributes::class;
 }
