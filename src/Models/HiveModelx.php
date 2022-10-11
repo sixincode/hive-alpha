@@ -7,5 +7,10 @@ use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 
 class HiveModelx extends HiveModelMin
 {
+  public function __construct()
+  {
     $this->casts['properties'] = SchemalessAttributes::class;
+
+  }
+
 }

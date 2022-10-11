@@ -5,11 +5,11 @@ namespace Sixincode\HiveAlpha\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Sixincode\HiveHelpers\Traits\FieldsTraits;
+use Sixincode\HiveHelpers\Traits\FieldsTrait;
 
 trait HasUserOwning
 {
-  use FieldsTraits;
+  use FieldsTrait;
 
   public static function bootHasUserOwning()
   {

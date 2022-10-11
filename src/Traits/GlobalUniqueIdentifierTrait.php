@@ -4,14 +4,14 @@ namespace Sixincode\HiveAlpha\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Sixincode\HiveHelpers\Traits\FieldsTraits;
+use Sixincode\HiveHelpers\Traits\FieldsTrait;
 
 trait GlobalUniqueIdentifierTrait
 {
+  use FieldsTrait;
+
   public static function bootGlobalUniqueIdentifierTrait()
   {
-    use FieldsTraits;
-
     if(app()->runningInConsole()) {
         return;
     }

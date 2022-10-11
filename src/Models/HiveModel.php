@@ -19,19 +19,21 @@ class HiveModel extends HiveModelMin
     use HasUserOwning;
     use HasTranslations;
 
-    $this->casts['created_at'] = 'datetime:d-m-Y';
-    $this->casts['updated_at'] = 'datetime:d-m-Y';
-    $this->casts['deleted_at'] = 'datetime:d-m-Y';
-
-    $this->fillable[] = 'slug';
-    $this->fillable[] = 'user_global';
-    $this->fillable[] = 'properties';
-    $this->fillable[] = 'description';
-
-    public function getRouteKeyName()
+    public function initializeHiveModel()
     {
-        self::getSlugKeyName();
+      $this->casts['created_at'] = 'datetime:d-m-Y';
+      $this->casts['updated_at'] = 'datetime:d-m-Y';
+      $this->casts['deleted_at'] = 'datetime:d-m-Y';
+
+      // $this->fillable[] = 'slug';
+      $this->fillable[] = 'user_global';
+      $this->fillable[] = 'properties';
+      $this->fillable[] = 'description';
     }
+
+    protected $orderable = [
+        // 'picture',
+    ];
 
     public static function getLocale()
     {
@@ -43,7 +45,7 @@ class HiveModel extends HiveModelMin
         if (in_array($key, $this->translatable) && ! is_array($value)) {
             return $this->setTranslation($key, static::getLocale(), $value);
         }
-
+        
         return parent::setAttribute($key, $value);
     }
 
