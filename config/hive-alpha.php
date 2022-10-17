@@ -7,6 +7,7 @@ return [
   'models'  => [
       'model'      => Sixincode\HiveAlpha\Models\HiveModel::class,
       'modelx'     => Sixincode\HiveAlpha\Models\HiveModelx::class,
+      'hive_user'  => Sixincode\HiveAlpha\Models\HiveUser::class,
   ],
   'column_names'  => [
       'key_global'     => 'global',

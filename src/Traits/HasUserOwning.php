@@ -32,4 +32,9 @@ trait HasUserOwning
      return true;
    }
 
+   public function userOwner()
+   {
+      return $this->belongsTo(config('hive-alpha.models.user'), self::globalUserFieldName(), self::globalUserFieldName());
+   }
+
 }
