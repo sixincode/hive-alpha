@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^9.0",
-        "sixincode/hive-helpers": "^1.0",
+        "sixincode/hive-helpers": "dev-main",
         "sixincode/modules-init": "^1.0",
         "spatie/laravel-schemaless-attributes": "^2.3",
         "spatie/laravel-sluggable": "^3.4",
@@ -67,11 +67,36 @@
     },
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://repo.packagist.com/sixincode/"
+            "type": "vcs",
+            "url": "https://github.com/sixincode/modules-init.git"
         },
         {
-            "packagist.org": false
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-helpers.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-form.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-display.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-alpha.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-posts.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-finance.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sixincode/hive-community.git"
         }
     ],
     "minimum-stability": "dev",
