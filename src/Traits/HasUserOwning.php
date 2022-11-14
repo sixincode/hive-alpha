@@ -11,7 +11,7 @@ trait HasUserOwning
 {
   use FieldsTrait;
 
-  public static function bootHasUserOwning()
+  public function initializeHasUserOwning()
   {
       if (app()->runningInConsole()) {
           return;
@@ -25,6 +25,8 @@ trait HasUserOwning
           }
           return;
        });
+ 
+       $this->fillable[] = self::globalUserFieldName();
    }
 
    private static function shouldBeUserAffiliated(): bool
@@ -35,6 +37,14 @@ trait HasUserOwning
    public function userOwner()
    {
       return $this->belongsTo(config('hive-alpha.models.user'), self::globalUserFieldName(), self::globalUserFieldName());
+   }
+
+   public function getAuthorArray()
+   {
+       return [
+         "author_name"     => $this->modified_at,
+         "author_username" => $this->modified_at,
+       ];
    }
 
 }

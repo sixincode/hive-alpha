@@ -26,18 +26,20 @@ class HiveModel extends HiveModelMin
       $this->casts['deleted_at'] = 'datetime:d-m-Y';
 
       // $this->fillable[] = 'slug';
-      $this->fillable[] = 'user_global';
       $this->fillable[] = 'properties';
       $this->fillable[] = 'description';
     }
 
-    protected $orderable = [
-        // 'picture',
-    ];
-
     public static function getLocale()
     {
         return app()->getLocale();
+    }
+
+    public function setNewValue($key, $value)
+    {
+      if (in_array($key, $this->fillable) && ! is_array($value)) {
+          $this->update([$key,$value]);
+      }
     }
 
     public function setAttribute($key, $value)
@@ -45,7 +47,7 @@ class HiveModel extends HiveModelMin
         if (in_array($key, $this->translatable) && ! is_array($value)) {
             return $this->setTranslation($key, static::getLocale(), $value);
         }
-        
+
         return parent::setAttribute($key, $value);
     }
 
