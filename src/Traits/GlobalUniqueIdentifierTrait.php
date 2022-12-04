@@ -31,6 +31,11 @@ trait GlobalUniqueIdentifierTrait
 
   }
 
+  // public static function getUserIdAttribute()
+  // {
+  //   return $this->getGlobalIdKeyName();
+  // }
+
   private static function shouldGenerateGlobalId(): bool
   {
     return config('hive-alpha.processes.global_by_default');
@@ -41,7 +46,7 @@ trait GlobalUniqueIdentifierTrait
     return self::globalFieldName();
   }
 
-  public static function getGlobalId(): string
+  public function getGlobalId(): string
   {
     return $this->getAttribute($this->getGlobalIdKeyName());
   }

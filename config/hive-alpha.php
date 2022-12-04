@@ -8,7 +8,7 @@ return [
       'login'  => Sixincode\HiveAlpha\Models\HiveLogin::class,
       'model'      => Sixincode\HiveAlpha\Models\HiveModel::class,
       'modelx'     => Sixincode\HiveAlpha\Models\HiveModelx::class,
-      'hive_user'  => Sixincode\HiveAlpha\Models\HiveUser::class,
+      'user'       => Sixincode\HiveAlpha\Models\HiveUser::class,
   ],
   'tables_names'  => [
       'logins'     => 'logins',

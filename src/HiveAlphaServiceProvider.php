@@ -15,7 +15,7 @@ class HiveAlphaServiceProvider extends PackageServiceProvider
           ->name('hive-alpha')
           ->hasConfigFile(['hive-alpha','hive-lang'])
           ->hasViews()
-          // ->hasMigration('create_hive-alpha_table')
+          ->hasMigration('create_hive-alpha_table')
           ->hasCommand(HiveAlphaCommand::class);
 
         AboutCommand::add('Sixin Code Alpha Elements for Laravel', fn () => ['Version' => '1.0.0']);
