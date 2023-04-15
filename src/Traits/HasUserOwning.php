@@ -23,9 +23,9 @@ trait HasUserOwning
               auth()->user()->getGlobalId()
             );
           }
-          return;
+          // return;
        });
- 
+
        $this->fillable[] = self::globalUserFieldName();
    }
 

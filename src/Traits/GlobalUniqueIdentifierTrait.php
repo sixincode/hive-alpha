@@ -10,12 +10,11 @@ trait GlobalUniqueIdentifierTrait
 {
   use FieldsTrait;
 
-  public function initializeGlobalUniqueIdentifierTrait()
+  protected static function bootGlobalUniqueIdentifierTrait()
   {
     if(app()->runningInConsole()) {
         return;
     }
-    $this->fillable[] = self::getGlobalIdKeyName();
 
     static::creating(function (self $model) {
           if(self::shouldGenerateGlobalId())
@@ -27,8 +26,11 @@ trait GlobalUniqueIdentifierTrait
           }
           return;
       });
+  }
 
-
+  public function initializeGlobalUniqueIdentifierTrait()
+  {
+    $this->fillable[] = self::getGlobalIdKeyName();
   }
 
   // public static function getUserIdAttribute()

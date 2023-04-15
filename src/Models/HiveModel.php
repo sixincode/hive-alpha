@@ -2,7 +2,6 @@
 
 namespace Sixincode\HiveAlpha\Models;
 
-use \DateTimeInterface;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Sixincode\HiveAlpha\Traits\GlobalUniqueIdentifierTrait;

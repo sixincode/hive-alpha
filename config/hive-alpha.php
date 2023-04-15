@@ -5,10 +5,10 @@ return [
   'name' => 'hiveAlpha',
   'identification' => 'hive-alpha',
   'models'  => [
-      'login'  => Sixincode\HiveAlpha\Models\HiveLogin::class,
+      'login'      => Sixincode\HiveAlpha\Models\HiveLogin::class,
       'model'      => Sixincode\HiveAlpha\Models\HiveModel::class,
       'modelx'     => Sixincode\HiveAlpha\Models\HiveModelx::class,
-      'user'       => Sixincode\HiveAlpha\Models\HiveUser::class,
+      'user'       => App\Models\User::class,
   ],
   'tables_names'  => [
       'logins'     => 'logins',

@@ -6,6 +6,8 @@ use Sixincode\ModulesInit\Package;
 use Sixincode\ModulesInit\PackageServiceProvider;
 use Sixincode\HiveAlpha\Commands\HiveAlphaCommand;
 use Illuminate\Foundation\Console\AboutCommand;
+use Sixincode\HiveAlpha\Traits\HiveAlphaDatabase;
+use Illuminate\Database\Schema\Blueprint;
 
 class HiveAlphaServiceProvider extends PackageServiceProvider
 {
@@ -18,7 +20,27 @@ class HiveAlphaServiceProvider extends PackageServiceProvider
           ->hasMigration('create_hive-alpha_table')
           ->hasCommand(HiveAlphaCommand::class);
 
-        AboutCommand::add('Sixin Code Alpha Elements for Laravel', fn () => ['Version' => '1.0.0']);
+        $this->registerHiveAlphaDatabaseMethods();
 
+        AboutCommand::add('Sixin Code Alpha Elements for Laravel', fn () => ['Version' => '1.0.0']);
+    }
+
+    private function registerHiveAlphaDatabaseMethods(): void
+    {
+      Blueprint::macro('addLoginFields', function (Blueprint $table, $properties = []) {
+        HiveAlphaDatabase::addLoginFields($table, $properties);
+      });
+
+      Blueprint::macro('addAlphaModelFields', function (Blueprint $table, $properties = []) {
+        HiveAlphaDatabase::addAlphaModelFields($table, $properties);
+      });
+
+      Blueprint::macro('addAlphaUserFields', function (Blueprint $table, $properties = []) {
+        HiveAlphaDatabase::addAlphaUserFields($table, $properties);
+      });
+
+      Blueprint::macro('addAlphaUserFields', function (Blueprint $table, $properties = []) {
+        HiveAlphaDatabase::addAlphaUserFields($table, $properties);
+      });
     }
 }

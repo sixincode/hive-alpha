@@ -5,21 +5,26 @@ namespace Sixincode\HiveAlpha\Models;
 use \DateTimeInterface;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Sixincode\HiveAlpha\Traits\GlobalUniqueIdentifierTrait;
-use Sixincode\HiveAlpha\Traits\HasDataAndProperties;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Sixincode\HiveCommunity\Traits\HasTeams;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
+use Sixincode\HiveAlpha\Traits as HiveAlphaTraits;
+use Sixincode\HiveStream\Traits as HiveStreamTraits;
+use Sixincode\HiveCommunity\Traits as HiveCommunityTraits;
+use Sixincode\HiveCalendar\Traits as HiveCalendarTraits;
 
 class HiveUser extends Authenticatable implements MustVerifyEmail
 {
     use SoftDeletes;
     use HasFactory;
-    use GlobalUniqueIdentifierTrait;
-    use HasDataAndProperties;
-    use HasTeams;
     use Notifiable;
+    use HiveAlphaTraits\GlobalUniqueIdentifierTrait;
+    use HiveAlphaTraits\HasDataAndProperties;
+    use HiveCommunityTraits\HasTeams;
+    use HiveStreamTraits\HasSettings;
+    use HiveStreamTraits\HasSubscriptionPlan;
+    use HiveStreamTraits\HiveStreamUser;
+    use HiveCalendarTraits\HasEventsTrait;
 
     public function initializeHiveUser()
     {
@@ -41,6 +46,11 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
     public static function getLocale()
     {
         return app()->getLocale();
+    }
+
+    public function validateUser()
+    {
+        $this->setUserSettings();
     }
 
 
