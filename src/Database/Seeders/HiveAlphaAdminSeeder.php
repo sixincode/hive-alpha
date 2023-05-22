@@ -7,7 +7,8 @@ use Sixincode\HivePosts\Models\Post;
 use Faker\Provider\fr_FR\Text as TextFR;
 use Sixincode\HiveHelpers\Traits\FieldsTrait;
 use App\Models\User;
-use Sixincode\HiveCommunity\Models\Team;
+// use Sixincode\HiveCommunity\Models\Team;
+use App\Models\Team;
 
 class HiveAlphaAdminSeeder extends Seeder
 {
