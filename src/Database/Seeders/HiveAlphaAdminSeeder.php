@@ -41,14 +41,6 @@ class HiveAlphaAdminSeeder extends Seeder
      //     Team::globalUserFieldName() => $admin->global,
      //
      // ]));
-     Team::forceCreate([
-         'user_id' => $admin->id,
-         'name' => $admin->first_name."'s Team",
-         'personal_team' => true,
-         Team::globalUserFieldName() => $admin->global,
-
-     ]);
-
 
   }
 }
