@@ -47,7 +47,7 @@ class HiveAlphaAdminSeeder extends Seeder
          'personal_team' => true,
          Team::globalUserFieldName() => $admin->global,
 
-     ])
+     ]);
 
 
   }
