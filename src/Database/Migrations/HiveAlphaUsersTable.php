@@ -23,7 +23,7 @@ class HiveAlphaUsersTable
         $table->string('provider_type')->nullable();
         $table->string('stripe_id')->unique()->nullable();
         $table->isPrivateField();
-        $table->globalField()
+        $table->globalField();
         $table->propertiesSchemaField();
         $table->dataSchemaField();
         $table->softDeletes();
