@@ -4,6 +4,8 @@ namespace Sixincode\HiveAlpha\Traits;
 
 use Illuminate\Database\Schema\Blueprint;
 use Sixincode\HiveHelpers\Traits\FieldsTrait;
+use Sixincode\HiveAlpha\Database\Seeders\HiveAlphaAdminSeeder;
+use Sixincode\HiveAlpha\Database\Migrations\HiveAlphaUsersTable;
 
 trait HiveAlphaDatabase
 {
@@ -88,6 +90,21 @@ trait HiveAlphaDatabase
     $table->dataSchemaField();
     $table->globalField();
     $table->timestamps();
+  }
+
+  public function seedAdmin()
+  {
+    return HiveAlphaAdminSeeder::class;
+  }
+
+  public function migrateUp()
+  {
+    HiveAlphaUsersTable::up();
+  }
+
+  public function migrateDown()
+  {
+    HiveAlphaUsersTable::down();
   }
 
 }
