@@ -47,3 +47,4 @@ class HiveAlphaUsersTable
         $table->string('name')->after('id');
       });
    }
+ }
