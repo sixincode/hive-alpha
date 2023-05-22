@@ -1,6 +1,6 @@
 <?php
 
-namespace Sixincode\HiveAlpha\Seeders;
+namespace Sixincode\HiveAlpha\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Sixincode\HivePosts\Models\Post;
