@@ -101,10 +101,12 @@ trait HiveAlphaDatabase
   public function migrateUp()
   {
     HiveAlphaUsersTable::up();
+    \HiveCommunity::migrateTeamsUp();
   }
 
   public function migrateDown()
   {
+    \HiveCommunity::migrateTeamsDown();
     HiveAlphaUsersTable::down();
   }
 
