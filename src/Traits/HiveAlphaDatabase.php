@@ -94,7 +94,8 @@ trait HiveAlphaDatabase
 
   public function seedAdmin()
   {
-    return HiveAlphaAdminSeeder::class;
+    $seeder = new HiveAlphaAdminSeeder;
+    return $seeder->run();
   }
 
   public function migrateUp()
