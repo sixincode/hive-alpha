@@ -21,10 +21,10 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
     use HiveAlphaTraits\GlobalUniqueIdentifierTrait;
     use HiveAlphaTraits\HasDataAndProperties;
     use HiveCommunityTraits\HasTeams;
-    // use HiveStreamTraits\HasSettings;
-    // use HiveStreamTraits\HasSubscriptionPlan;
-    // use HiveStreamTraits\HiveStreamUser;
-    // use HiveCalendarTraits\HasEventsTrait;
+    use HiveStreamTraits\HasSettings;
+    use HiveStreamTraits\HasSubscriptionPlan;
+    use HiveStreamTraits\HiveStreamUser;
+    use HiveCalendarTraits\HasEventsTrait;
 
     public function initializeHiveUser()
     {

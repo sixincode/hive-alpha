@@ -2,9 +2,11 @@
 
 namespace Sixincode\HiveAlpha;
 
-use Sixincode\HiveAlpha\Traits\HiveAlphaDatabase;
+use Sixincode\HiveAlpha\Traits\Database as DatabaseTrait;
 
 class HiveAlpha
 {
-  use HiveAlphaDatabase;
+  use DatabaseTrait\HiveAlphaMigrationsTrait;
+  use DatabaseTrait\HiveAlphaSeedersTrait;
+
 }

@@ -20,12 +20,15 @@ class HiveModel extends HiveModelMin
 
     public function initializeHiveModel()
     {
+      $this->translatable[] = 'name';
+      $this->translatable[] = 'description';
+
       $this->casts['created_at'] = 'datetime:d-m-Y';
       $this->casts['updated_at'] = 'datetime:d-m-Y';
       $this->casts['deleted_at'] = 'datetime:d-m-Y';
 
       // $this->fillable[] = 'slug';
-      $this->fillable[] = 'properties';
+      $this->fillable[] = 'name';
       $this->fillable[] = 'description';
     }
 
