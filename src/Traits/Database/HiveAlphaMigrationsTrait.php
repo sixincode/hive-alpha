@@ -8,11 +8,16 @@ trait HiveAlphaMigrationsTrait
 {
   public function migrateUp(): void
   {
-    Migrations\HiveAlphaTables::up();
+    $migration = new Migrations\HiveAlphaTables;
+    $migration->up();
+    // \HiveCommunity::migrateTeamsUp();
   }
 
   public function migrateDown(): void
   {
-    Migrations\HiveAlphaTables::down();
+    // \HiveCommunity::migrateTeamsDown();
+    $migration = new Migrations\HiveAlphaTables;
+    $migration->down();
+
   }
 }

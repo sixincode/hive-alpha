@@ -10,8 +10,9 @@ return [
       'modelx'     => Sixincode\HiveAlpha\Models\HiveModelx::class,
       'user'       => App\Models\User::class,
   ],
-  'tables_names'  => [
+  'table_names'  => [
       'logins'     => 'logins',
+      'users'      => 'users',
     ],
   'column_names'  => [
       'key_global'     => 'global',

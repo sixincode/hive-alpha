@@ -18,20 +18,21 @@ class HiveAlphaTables extends Migration
       if (empty($columnNames)) {
         throw new \Exception('Error: config/hive-alpha.php not loaded. Run [php artisan config:clear] and try again.');
       }
+
       if(!Schema::hasTable($tableNames['logins'])) {
-        Schema::create('logins', function (Blueprint $table) {
-            $table->addLoginFields();
+        Schema::create($tableNames['logins'], function (Blueprint $table) {
+            $table->addLoginFields($table);
         });
       }
 
       if(Schema::hasTable($tableNames['users'])) {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table($tableNames['users'], function (Blueprint $table) {
             $table->dropColumn('name');
-            $table->addAlphaUserFields()->unique();
+            $table->joinAlphaUserFields($table);
         });
       }else{
-        Schema::create('users', function (Blueprint $table) {
-            $table->addAlphaUserFields()->unique();
+        Schema::create($tableNames['users'], function (Blueprint $table) {
+            $table->addAlphaUserFields($table);
         });
       }
 
@@ -51,19 +52,38 @@ class HiveAlphaTables extends Migration
 
       Schema::dropIfExists($tableNames['logins']);
 
-      Schema::table('users', function (Blueprint $table) {
+      Schema::table($tableNames['users'], function (Blueprint $table) {
             $table->string('name');
-            $table->dropColumn('first_name');
-            $table->dropColumn('last_name');
-            $table->dropColumn('username');
-            $table->dropColumn('phone');
-            $table->dropColumn('stripe_id');
-            $table->dropColumn('current_tenant_id');
-            $table->dropColumn('current_team_id');
-            $table->dropColumn('profile_photo_path');
-            $table->dropColumn('membership_ends_at');
-            $table->dropColumn('type');
-            $table->dropColumn('global');
+            $table->dropColumn(array_merge([
+                'first_name',
+                'last_name',
+                'username',
+                'phone',
+                'email',
+                'email_verified_at',
+                'password',
+                'status',
+                'remember_token',
+                'stripe_id',
+                'provider_id',
+                'provider_type',
+                'current_tenant_id',
+                'current_team_id',
+                'profile_photo_path',
+                'membership_ends_at',
+                'type',
+                'two_factor_secret',
+                'two_factor_recovery_codes',
+                'two_factor_confirmed_at',
+                'is_featured',
+                'is_private',
+                'is_active',
+                'properties',
+                'data',
+                'global',
+                'is_deleted',
+                  ])
+                );
         });
     }
 };

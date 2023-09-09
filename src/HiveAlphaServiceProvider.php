@@ -6,7 +6,7 @@ use Sixincode\ModulesInit\Package;
 use Sixincode\ModulesInit\PackageServiceProvider;
 use Sixincode\HiveAlpha\Commands\HiveAlphaCommand;
 use Illuminate\Foundation\Console\AboutCommand;
-use Sixincode\HiveAlpha\Traits\Database\HiveAlphaDatabaseTrait;
+use Sixincode\HiveAlpha\Traits\Database as DatabaseTraits;
 use Illuminate\Database\Schema\Blueprint;
 
 class HiveAlphaServiceProvider extends PackageServiceProvider
@@ -28,19 +28,20 @@ class HiveAlphaServiceProvider extends PackageServiceProvider
     private function registerHiveAlphaDatabaseMethods(): void
     {
       Blueprint::macro('addLoginFields', function (Blueprint $table, $properties = []) {
-        HiveAlphaDatabaseTrait::addLoginFields($table, $properties);
+        DatabaseTraits\HiveAlphaDatabaseDefinitions::addLoginFields($table, $properties);
       });
 
       Blueprint::macro('addAlphaModelFields', function (Blueprint $table, $properties = []) {
-        HiveAlphaDatabaseTrait::addAlphaModelFields($table, $properties);
+        DatabaseTraits\HiveAlphaDatabaseDefinitions::addAlphaModelFields($table, $properties);
+      });
+
+      Blueprint::macro('joinAlphaUserFields', function (Blueprint $table, $properties = []) {
+        DatabaseTraits\HiveAlphaDatabaseDefinitions::joinAlphaUserFields($table, $properties);
       });
 
       Blueprint::macro('addAlphaUserFields', function (Blueprint $table, $properties = []) {
-        HiveAlphaDatabaseTrait::addAlphaUserFields($table, $properties);
+        DatabaseTraits\HiveAlphaDatabaseDefinitions::addAlphaUserFields($table, $properties);
       });
 
-      Blueprint::macro('addAlphaUserFields', function (Blueprint $table, $properties = []) {
-        HiveAlphaDatabaseTrait::addAlphaUserFields($table, $properties);
-      });
     }
 }

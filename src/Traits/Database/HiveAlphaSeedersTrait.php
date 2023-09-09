@@ -8,6 +8,7 @@ trait HiveAlphaSeedersTrait
 {
   public function seedAdmin(): void
   {
-    Seeders\HiveAlphaAdminSeeder::up();
+    $seeder = new Seeders\HiveAlphaAdminSeeder;
+    $seeder->run();
   }
 }
