@@ -11,9 +11,9 @@ return [
       'user'       => App\Models\User::class,
   ],
   'table_names'  => [
-      'logins'     => 'logins',
-      'users'      => 'users',
-    ],
+      'logins'   => 'logins',
+      'users'    => 'users',
+  ],
   'column_names'  => [
       'key_global'     => 'global',
       'key_user'       => 'user_global',

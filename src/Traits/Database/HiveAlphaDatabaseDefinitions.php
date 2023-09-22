@@ -73,7 +73,7 @@ trait HiveAlphaDatabaseDefinitions
       $table->timestamp('two_factor_confirmed_at')->nullable();
     });
 
-    $table->after('profile_photo_path', function (Blueprint $table) {
+    $table->after('remember_token', function (Blueprint $table) {
       $table->isFeaturedField();
       $table->isPrivateField();
       $table->isActiveField();

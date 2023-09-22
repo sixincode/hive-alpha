@@ -2,7 +2,6 @@
 namespace Sixincode\HiveAlpha\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Seeder;
 use Sixincode\HivePosts\Models\Post;
 use Faker\Provider\fr_FR\Text as TextFR;
 use Sixincode\HiveHelpers\Traits\FieldsTrait;
