@@ -8,6 +8,7 @@ use Sixincode\HiveAlpha\Commands\HiveAlphaCommand;
 use Illuminate\Foundation\Console\AboutCommand;
 use Sixincode\HiveAlpha\Traits\Database as DatabaseTraits;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\AliasLoader;
 
 class HiveAlphaServiceProvider extends PackageServiceProvider
 {
@@ -23,6 +24,12 @@ class HiveAlphaServiceProvider extends PackageServiceProvider
       $this->registerHiveAlphaDatabaseMethods();
 
       AboutCommand::add('Sixin Code Alpha Elements for Laravel', fn () => ['Version' => '1.0.0']);
+    }
+
+    public function registeringPackage()
+    {
+      $loader = AliasLoader::getInstance();
+      $loader->alias('HiveUser', 'Sixincode\HiveAlpha\Models\HiveUser');
     }
 
     private function registerHiveAlphaDatabaseMethods(): void

@@ -55,8 +55,10 @@ trait HiveAlphaDatabaseDefinitions
 
   public static function joinAlphaUserFields(Blueprint $table): void
   {
-    $table->string('first_name');
-    $table->string('last_name');
+    $table->after('id', function (Blueprint $table) {
+      $table->string('first_name');
+      $table->string('last_name');
+    });
 
     $table->after('email', function (Blueprint $table) {
       $table->string('username')->unique();
@@ -68,9 +70,17 @@ trait HiveAlphaDatabaseDefinitions
       $table->foreignId('current_tenant_id')->nullable();
       $table->integer('membership_ends_at')->nullable();
       $table->integer('type')->default(3000);
-      $table->text('two_factor_secret')->nullable();
-      $table->text('two_factor_recovery_codes')->nullable();
-      $table->timestamp('two_factor_confirmed_at')->nullable();
+
+      if(table_has_column(check_tableUsers(),'two_factor_secret')){
+        $table->text('two_factor_secret')->nullable();
+      }
+      if(table_has_column(check_tableUsers(),'two_factor_recovery_codes')){
+        $table->text('two_factor_recovery_codes')->nullable();
+      }
+      if(table_has_column(check_tableUsers(),'two_factor_confirmed_at')){
+        $table->text('two_factor_confirmed_at')->nullable();
+      }
+
     });
 
     $table->after('remember_token', function (Blueprint $table) {

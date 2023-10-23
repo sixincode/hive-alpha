@@ -61,7 +61,7 @@
                 "Sixincode\\HiveAlpha\\HiveAlphaServiceProvider"
             ],
             "aliases": {
-                "HiveAlpha": "Sixincode\\HiveAlpha\\Facades\\HiveAlpha"
+              "HiveAlpha": "Sixincode\\HiveAlpha\\Facades\\HiveAlpha"
             }
         }
     },

@@ -10,8 +10,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Sixincode\HiveAlpha\Traits as HiveAlphaTraits;
 use Sixincode\HiveStream\Traits as HiveStreamTraits;
-use Sixincode\HiveCommunity\Traits as HiveCommunityTraits;
-use Sixincode\HiveCalendar\Traits as HiveCalendarTraits;
+// use Sixincode\HiveCommunity\Traits as HiveCommunityTraits;
+// use Sixincode\HiveCalendar\Traits as HiveCalendarTraits;
 
 class HiveUser extends Authenticatable implements MustVerifyEmail
 {
@@ -20,11 +20,11 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use HiveAlphaTraits\GlobalUniqueIdentifierTrait;
     use HiveAlphaTraits\HasDataAndProperties;
-    use HiveCommunityTraits\HasTeams;
+    // use HiveCommunityTraits\HasTeams;
     use HiveStreamTraits\HasSettings;
     use HiveStreamTraits\HasSubscriptionPlan;
     use HiveStreamTraits\HiveStreamUser;
-    use HiveCalendarTraits\HasEventsTrait;
+    // use HiveCalendarTraits\HasEventsTrait;
 
     public function initializeHiveUser()
     {
@@ -32,9 +32,15 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
       $this->casts['updated_at'] = 'datetime:d-m-Y';
       $this->casts['deleted_at'] = 'datetime:d-m-Y';
 
+      $this->appends[] = 'name';
+
       // $this->fillable[] = 'slug';
-      $this->fillable[] = 'properties';
+      // $this->fillable[] = 'properties';
     }
+
+    protected $appends = [
+        // 'picture',
+    ];
 
     protected $orderable = [
         // 'picture',
@@ -53,6 +59,21 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
         $this->setUserSettings();
     }
 
+    public function getNameAttribute()
+    {
+        return $this->first_name.''.$this->last_name;
+    }
 
+    public function getProfileAttributes()
+    {
+        return [
+          'first_name' => $this->first_name,
+          'last_name'  => $this->last_name,
+          'username'   => $this->username,
+          'email'      => $this->email,
+          'phone'      => $this->phone,
+          'email'      => $this->email,
+        ];
+    }
 
 }
