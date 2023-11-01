@@ -38,7 +38,7 @@ trait HiveAlphaDatabaseDefinitions
     $table->globalField();
     $table->softDeletes();
     $table->timestamps();
-  }
+  } 
 
   public static function addAlphaUserFields(Blueprint $table): void
   {

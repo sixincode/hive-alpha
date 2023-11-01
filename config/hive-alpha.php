@@ -17,6 +17,7 @@ return [
   'column_names'  => [
       'key_global'     => 'global',
       'key_user'       => 'user_global',
+      'slug'           => 'slug',
   ],
   'processes'  => [
       'activate_by_default'     => true,
@@ -30,4 +31,6 @@ return [
       'model_key'                   => 'name',
       'store'                       => 'default',
   ],
+  'slugger'            => '\Illuminate\Support\Str::slug',
+
 ];

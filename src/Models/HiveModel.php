@@ -2,21 +2,13 @@
 
 namespace Sixincode\HiveAlpha\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Sixincode\HiveAlpha\Traits\GlobalUniqueIdentifierTrait;
-use Sixincode\HiveAlpha\Traits\HasDataAndProperties;
-use Sixincode\HiveAlpha\Traits\HasUserOwning;
-use Spatie\Translatable\HasTranslations;
+use Sixincode\HiveAlpha\Traits\HiveModelTraits;
 
 class HiveModel extends HiveModelMin
 {
-    use SoftDeletes;
     use HasFactory;
-    use GlobalUniqueIdentifierTrait;
-    use HasDataAndProperties;
-    use HasUserOwning;
-    use HasTranslations;
+    use HiveModelTraits;
 
     public function initializeHiveModel()
     {

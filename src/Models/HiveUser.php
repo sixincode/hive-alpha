@@ -49,6 +49,11 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
         // 'picture',
     ];
 
+    public function getIdKey()
+    {
+        return $this->id;
+    }
+
     public static function getLocale()
     {
         return app()->getLocale();
@@ -74,6 +79,11 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
           'phone'      => $this->phone,
           'email'      => $this->email,
         ];
+    }
+
+    public function mainAdmin()
+    {
+        return $this->first_name.''.$this->last_name;
     }
 
 }
