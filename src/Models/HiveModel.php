@@ -24,25 +24,5 @@ class HiveModel extends HiveModelMin
       $this->fillable[] = 'description';
     }
 
-    public static function getLocale()
-    {
-        return app()->getLocale();
-    }
-
-    public function setNewValue($key, $value)
-    {
-      if (in_array($key, $this->fillable) && ! is_array($value)) {
-          $this->update([$key,$value]);
-      }
-    }
-
-    public function setAttribute($key, $value)
-    {
-        if (in_array($key, $this->translatable) && ! is_array($value)) {
-            return $this->setTranslation($key, static::getLocale(), $value);
-        }
-
-        return parent::setAttribute($key, $value);
-    }
 
 }

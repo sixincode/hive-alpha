@@ -13,9 +13,9 @@ trait HasUserOwning
 
   public function initializeHasUserOwning()
   {
-      if (app()->runningInConsole()) {
-          return;
-      }
+      // if (app()->runningInConsole()) {
+      //     return;
+      // }
       static::creating(function (Model $model) {
           if(auth()->check() && self::shouldBeUserAffiliated()){
             $model->setAttribute(

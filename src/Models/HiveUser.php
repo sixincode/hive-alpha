@@ -12,6 +12,9 @@ use Sixincode\HiveAlpha\Traits as HiveAlphaTraits;
 use Sixincode\HiveStream\Traits as HiveStreamTraits;
 // use Sixincode\HiveCommunity\Traits as HiveCommunityTraits;
 // use Sixincode\HiveCalendar\Traits as HiveCalendarTraits;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Sixincode\HiveNewsletter\Traits as HiveNewsletterTraits;
+use Sixincode\HiveAlpha\Database\Factories\UserFactory;
 
 class HiveUser extends Authenticatable implements MustVerifyEmail
 {
@@ -24,6 +27,7 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
     use HiveStreamTraits\HasSettings;
     use HiveStreamTraits\HasSubscriptionPlan;
     use HiveStreamTraits\HiveStreamUser;
+    use HiveNewsletterTraits\HasNewsletter;
     // use HiveCalendarTraits\HasEventsTrait;
 
     public function initializeHiveUser()
@@ -69,6 +73,11 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
         return $this->first_name.''.$this->last_name;
     }
 
+    public function getTable()
+    {
+      return config('hive-alpha.table_names.users');
+    }
+
     public function getProfileAttributes()
     {
         return [
@@ -79,6 +88,11 @@ class HiveUser extends Authenticatable implements MustVerifyEmail
           'phone'      => $this->phone,
           'email'      => $this->email,
         ];
+    }
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 
     public function mainAdmin()

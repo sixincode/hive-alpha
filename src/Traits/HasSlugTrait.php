@@ -9,13 +9,18 @@ trait HasSlugTrait
 {
   use SpatieSlug;
 
- public function initializeHasSlugTrait()
- {
-     if (app()->runningInConsole()) {
-         return;
-     }
+  public function initializeHasSlugTrait()
+  {
+      // if (app()->runningInConsole()) {
+      //     return;
+      // }
 
-     $this->fillable[] = $this->getSlugKeyName();
+      $this->fillable[] = $this->getSlugKeyName();
+   }
+
+  public function getRouteKeyValue()
+  {
+      return $this->getAttribute($this->getRouteKeyName());
   }
 
   private static function shouldHaveSLug(): bool

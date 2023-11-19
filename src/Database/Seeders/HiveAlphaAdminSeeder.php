@@ -6,7 +6,9 @@ use Sixincode\HivePosts\Models\Post;
 use Faker\Provider\fr_FR\Text as TextFR;
 use Sixincode\HiveHelpers\Traits\FieldsTrait;
 use App\Models\User;
+use App\Models\Team;
 // use Sixincode\HiveCommunity\Models\Team;
+// use Sixincode\HiveAlpha\Models\HiveUser as User;
 
 class HiveAlphaAdminSeeder extends Seeder
 {
@@ -31,13 +33,21 @@ class HiveAlphaAdminSeeder extends Seeder
       ];
 
       $admin = User::create($user);
-      // $users = User::factory()->count(6)->create();
-      // $admin->ownedTeams()->save(Team::forceCreate([
-      //     'user_id' => $admin->id,
-      //     'name' => $admin->first_name."'s Team",
-      //     'personal_team' => true,
-      //     Team::globalUserFieldName() => $admin->global,
-      // ]));
-   }
+      $admin->markEmailAsVerified();
 
+      $admin->ownedTeams()->save(Team::forceCreate([
+          'user_id'       => $admin->id,
+          'name'          => $admin->first_name."'s Team",
+          'description'   => "Main Admin Team",
+          'personal_team' => true,
+          Team::globalUserFieldName() => $admin->global,
+      ]));
+
+      // $users = User::factory()->count(24)->withPersonalTeam()->create();
+      $user = User::factory()
+            ->withPersonalTeam()
+            ->count(6)
+            ->create();
+
+   }
 };

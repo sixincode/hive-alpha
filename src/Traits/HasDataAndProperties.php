@@ -11,8 +11,6 @@ trait HasDataAndProperties
   {
     $this->casts['data'] = SchemalessAttributes::class;
     $this->casts['properties'] = SchemalessAttributes::class;
-    $this->orderable[] = 'properties';
-    $this->filterable[] = 'properties';
     $this->fillable[] = 'properties';
     $this->fillable[] = 'data';
   }

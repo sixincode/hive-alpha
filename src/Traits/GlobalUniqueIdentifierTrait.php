@@ -12,9 +12,9 @@ trait GlobalUniqueIdentifierTrait
 
   protected static function bootGlobalUniqueIdentifierTrait()
   {
-    if(app()->runningInConsole()) {
-        return;
-    }
+    // if(app()->runningInConsole()) {
+    //     return;
+    // }
 
     static::creating(function (self $model) {
           if(self::shouldGenerateGlobalId())
@@ -51,5 +51,10 @@ trait GlobalUniqueIdentifierTrait
   public function getGlobalId(): string
   {
     return $this->getAttribute($this->getGlobalIdKeyName());
+  }
+
+  public function getGlobalKey(): string
+  {
+    return $this->getGlobalId();
   }
 }
