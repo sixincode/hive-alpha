@@ -16,4 +16,11 @@ trait HiveAlphaSeedersTrait
     $seeder = new Seeders\HiveAlphaAdminSeeder;
     $seeder->run();
   }
+
+  public function seedDemo(): void
+  {
+    $this->seedAdmin();
+    $seeder = new Seeders\HiveAlphaDemoSeeder;
+    $seeder->run();
+  }
 }

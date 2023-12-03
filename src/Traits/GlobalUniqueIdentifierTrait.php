@@ -57,4 +57,14 @@ trait GlobalUniqueIdentifierTrait
   {
     return $this->getGlobalId();
   }
+
+  public function getGlobalMorphId(): string
+  {
+    return $this->getId();
+  }
+
+  public function getGlobalMorphType(): string
+  {
+    return self::class;
+  }
 }

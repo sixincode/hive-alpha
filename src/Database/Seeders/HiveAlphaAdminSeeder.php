@@ -43,11 +43,6 @@ class HiveAlphaAdminSeeder extends Seeder
           Team::globalUserFieldName() => $admin->global,
       ]));
 
-      // $users = User::factory()->count(24)->withPersonalTeam()->create();
-      $user = User::factory()
-            ->withPersonalTeam()
-            ->count(6)
-            ->create();
 
    }
 };
